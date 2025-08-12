@@ -1,0 +1,25 @@
+batch_size: 32 
+epochs: 200 
+eval_every_n_epochs: 1 
+fine_tune_from: pretrained_15M_virtual_lib 
+log_every_n_steps: 5 
+fp16_precision: False 
+init_lr: 0.0005 
+init_base_lr: 0.0001 
+weight_decay: 1e-6 
+gpu: cuda:0 
+task_name: lnp_muye_experiments 
+
+
+model:
+  num_layer: 5 
+  emb_dim: 300 
+  feat_dim: 512 
+  drop_ratio: 0.3 
+  pool: mean 
+  norm: batch 
+dataset:
+  num_workers: 4 
+  valid_size: 0.1 
+  test_size: 0.1 
+  splitting: scaffold 
