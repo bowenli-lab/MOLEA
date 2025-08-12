@@ -13,7 +13,7 @@ Follow these steps to set up your environment and install all necessary dependen
 1.  **Clone the Repository**
     
     ```bash
-    git clone [https://github.com/bowenli-lab/MOLEA.git](https://github.com/bowenli-lab/MOLEA.git)
+    git clone https://github.com/bowenli-lab/MOLEA.git
     cd MOLEA
     ```
     
