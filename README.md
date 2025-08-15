@@ -1,5 +1,6 @@
 # **MOLEA 🌿**
 
+Lipid nanoparticles (LNPs) enable nonviral delivery of RNA therapeutics but are often constrained by poor tissue selectivity and off-target toxicity. While high-throughput screening has accelerated LNP discovery, most strategies focus on single-target efficacy, oftentimes overlooking competing off-target uptake. Here, we report a Multi-Objective LNP Engineering with Artificial Intelligence (MOLEA), a platform that integrates high-dimensional lipid representations, cell-type-resolved transfection data, and multi-task optimization to design ionizable lipids with both high potency and biological selectivity. MOLEA learns structure-function relationships across diverse cellular contexts to identify lipids that preferentially deliver mRNA to primary chondrocytes while minimizing hepatocyte transfection. Using this approach, we developed K9 LNPs, which achieved over 90% transfection efficiency in joint chondrocytes and a 13.5-fold increase in knee-to-liver selectivity compared to the clinical benchmark SM102. K9 LNPs enable in vivo delivery of Cre mRNA and Cas9-based genome editors, and achieve chondrocyte-specific Mmp13 editing in both acute and chronic osteoarthritis mouse models, leading to sustained cartilage protection and suppression of disease-associated immune and matrix remodeling pathways. Our findings demonstrate how AI-guided, multi-objective optimization can expand the LNP design space and enable precision delivery for RNA therapeutics, advancing the integration of molecular engineering, machine learning, and therapeutic genome editing.
 ---
 ## **Prerequisites**
 
@@ -50,13 +51,18 @@ The core workflow consists of pre-training, fine-tuning, and inference.
 ### **1. Dataset**
 
 The datasets for both pre-training and fine-tuning stages are provided within the `./data` directory of this repository.
+If you want to train the model with your own dataset, please follow the same file format as provided.
+
 
 ### **2. Pre-training**
 
 A model checkpoint pre-trained on a 15M virtual library is already included in the `./ckpt` folder. This step is only necessary if you want to pre-train the model on your own dataset.
 
-* **Note:** For a warm start, first download the pre-trained model weights from [MolCLR](https://github.com/yuyangw/MolCLR).
+* **Note:** For a warm start, first download the pre-trained model weights from [MolCLR](https://github.com/yuyangw/MolCLR). 
 * Modify the `config_pretrain.yaml` file to match your dataset and requirements.
+* `load_model` is for loading the MolCLR or checkpoint to resume pre-training.
+* `data_path` is for indicating the path for the data
+* Other parameters could be customized as needed.
 
 To start pre-training, run the following command:
 ```bash
@@ -65,10 +71,11 @@ python pretrain.py config_pretrain.yaml
 
 
 ### **3. Fine-tuning**
+The fine-tuned mode for Chondricyte and Hepatocyte are provided within the `./data` directory of this repository.
 
-To fine-tune the model for a specific downstream task:
+To fine-tune the model for a specific downstream task on your own datasets:
 
-Modify the config_finetune.yaml file as needed.
+Modify the config_finetune.yaml file as needed. Also please modify the line 357 in finetune.py to the dataset path.
 
 To start fine-tuning, run the command:
 
@@ -78,7 +85,7 @@ python finetune.py config_finetune.yaml
 
 ### **4. Inference**
 
-To run inference and generate predictions with your fine-tuned model, use the command below. The script also includes built-in visualization tools.
+To run inference and generate predictions with your fine-tuned model, use the command below. The script also includes built-in visualization tools. The inference script access the config file in the finetuned_model_folder, so please make sure it contains the config file (output from the fine-tuning script)
 
 ```bash
 python infer.py <path_to_your_finetuned_model_folder>
