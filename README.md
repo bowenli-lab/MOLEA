@@ -1,6 +1,8 @@
-# **MOLEA 🌿**
+# **MOLEA 🌿** 
 
+---
 Lipid nanoparticles (LNPs) enable nonviral delivery of RNA therapeutics but are often constrained by poor tissue selectivity and off-target toxicity. While high-throughput screening has accelerated LNP discovery, most strategies focus on single-target efficacy, oftentimes overlooking competing off-target uptake. Here, we report a Multi-Objective LNP Engineering with Artificial Intelligence (MOLEA), a platform that integrates high-dimensional lipid representations, cell-type-resolved transfection data, and multi-task optimization to design ionizable lipids with both high potency and biological selectivity. MOLEA learns structure-function relationships across diverse cellular contexts to identify lipids that preferentially deliver mRNA to primary chondrocytes while minimizing hepatocyte transfection. Using this approach, we developed K9 LNPs, which achieved over 90% transfection efficiency in joint chondrocytes and a 13.5-fold increase in knee-to-liver selectivity compared to the clinical benchmark SM102. K9 LNPs enable in vivo delivery of Cre mRNA and Cas9-based genome editors, and achieve chondrocyte-specific Mmp13 editing in both acute and chronic osteoarthritis mouse models, leading to sustained cartilage protection and suppression of disease-associated immune and matrix remodeling pathways. Our findings demonstrate how AI-guided, multi-objective optimization can expand the LNP design space and enable precision delivery for RNA therapeutics, advancing the integration of molecular engineering, machine learning, and therapeutic genome editing.
+
 ---
 ## **Prerequisites**
 
